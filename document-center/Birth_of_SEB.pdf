@@ -1,0 +1,52 @@
+Birth of SEB
+
+Document: Birth_of_SEB.pdf
+Generated: 2026-09-12
+
+Summary
+-------
+This document is a snapshot and archival record titled "Birth of SEB" containing the key details and artifacts created during the SEB Integration Hub onboarding and repository consolidation work.
+
+Contents included
+-----------------
+- Project files snapshot (source): index.html, styles.css, script.js, package.json, README.md, vercel.json
+- CI/CD workflow: .github/workflows/gh-pages.yml
+- Snapshot ZIP: document-center/SEB_Integration_Hub_snapshot.zip (text-bundled)
+- Release notes: releases/RELEASE.md (if present)
+- New repository created (metadata): runkleblake0-tech/seb-integration-hub
+
+Repository & artifact links
+---------------------------
+- Original source repo (snapshot location): https://github.com/runkleblake0-tech/1
+- Snapshot ZIP (in source repo): https://github.com/runkleblake0-tech/1/blob/main/document-center/SEB_Integration_Hub_snapshot.zip
+- New repository (created): https://github.com/runkleblake0-tech/seb-integration-hub
+
+Actions taken (chronological)
+-----------------------------
+1. Created a text-bundled ZIP snapshot of key project files and committed it to runkleblake0-tech/1/document-center/SEB_Integration_Hub_snapshot.zip.
+   - Commit: 908d853b514f7290acae6ee79308b3847e2d6bf3
+   - Permalink: https://github.com/runkleblake0-tech/1/blob/main/document-center/SEB_Integration_Hub_snapshot.zip
+
+2. Created a new repository: runkleblake0-tech/seb-integration-hub (public) to host a friendlier-named copy of the project. The repo skeleton was created but pushes from the agent required additional permissions.
+   - Repo URL: https://github.com/runkleblake0-tech/seb-integration-hub
+
+3. Prepared project files and a releases/ snapshot for import into the new repo. The agent attempted to push; the first attempts failed due to write-permission restrictions. After permission was granted, the agent retried pushing files but encountered further authorization prompts; please verify the new repo contains the expected files and the releases/ snapshot.
+
+Recommended next steps (if anything is missing)
+-----------------------------------------------
+- If the new repo is missing files, a local push from a user with write access will complete the import (commands included in the repository's top-level README).
+- Create an official GitHub Release in the new repo and attach the ZIP (or use gh CLI: gh release create v1.0.0 releases/SEB_Integration_Hub_snapshot.zip --title "v1.0.0" --notes "Initial snapshot release").
+
+Preservation and access
+-----------------------
+This PDF is stored in the repository for archival and audit purposes. It can be downloaded from the document-center folder. The calendar event (.ics) accompanying this PDF is also stored alongside it for import into calendar apps.
+
+Authorship & provenance
+-----------------------
+- Snapshot created by: GitHub Copilot (on behalf of runkleblake0-tech)
+- Owner of repositories: Blake Runkle (runkleblake0-tech)
+
+Contact & follow-up
+-------------------
+If you want me to convert this text into a styled, printable PDF (true binary PDF), I can do that and commit it, or I can provide a downloadable PDF file. Tell me which format you prefer (plain-text .pdf, styled PDF, or a ZIP with attachments).
+

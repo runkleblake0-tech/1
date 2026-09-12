@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//runkleblake0-tech//Birth of SEB//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:birth-of-seb-20260912@runkleblake0-tech
+DTSTAMP:20260912T090000Z
+DTSTART:20260912T090000Z
+DTEND:20260912T100000Z
+SUMMARY:Birth of SEB - SEB Integration Hub snapshot archived
+DESCRIPTION:Archive and snapshot created for SEB Integration Hub. Files stored in repository runkleblake0-tech/1 under document-center. See document-center/Birth_of_SEB.pdf and SEB_Integration_Hub_snapshot.zip
+LOCATION:GitHub - runkleblake0-tech/1
+END:VEVENT
+END:VCALENDAR

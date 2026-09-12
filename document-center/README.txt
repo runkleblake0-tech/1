@@ -1,1 +1,1 @@
-Add ZIP snapshot of selected project files to document-center
+Added Birth_of_SEB PDF (plain-text snapshot) and calendar event (.ics) to document-center for archival and calendar import.
