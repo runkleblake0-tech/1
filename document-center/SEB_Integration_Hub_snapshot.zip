@@ -1,0 +1,171 @@
+=== README.md ===
+
+# SEB Integration Hub
+
+This is a minimal Vite static site for the SEB Integration Hub used for demonstrations and static deployment.
+
+Local development
+
+1. Set up Node 18+ and npm
+2. npm install
+3. npm run dev
+
+Build
+
+- npm run build
+
+Deploy
+
+The repository includes a GitHub Action to build and deploy the `dist/` folder to GitHub Pages automatically on pushes to `main`.
+
+You can check the workflow under: .github/workflows/gh-pages.yml
+
+Pages site (when published) will be available at:
+https://runkleblake0-tech.github.io/1/
+
+Related repositories
+
+- [Signature-Evolution-Blueprints/Beginning-](https://github.com/Signature-Evolution-Blueprints/Beginning-) (repo ID: 1358836264)
+  - Description: https://v0.app/tiger-blueprint/chat/tiger-blueprint-hq-d6fOVIlfh8c#xWg0jXvWE0cC8StWYUC1yGSMvbS6R8Zi
+
+- [runkleblake0-tech/express-js-on-vercel](https://github.com/runkleblake0-tech/express-js-on-vercel) (repo ID: 1348166379)
+  - Language composition: TypeScript 71.7%, HTML 21.2%, CSS 7.1%
+
+- [runkleblake0-tech/Senior](https://github.com/runkleblake0-tech/Senior) (repo ID: 1348094502)
+  - Description: https://v0.app/tiger-blueprint/chat/tiger-blueprint-hq-d6fOVIlfh8c#xWg0jXvWE0cC8StWYUC1yGSMvbS6R8Zi
+
+- [runkleblake0-tech/Seb-email-repo](https://github.com/runkleblake0-tech/Seb-email-repo) (repo ID: 1357799667)
+  - Description: Inbound andb outbound emails
+
+- [runkleblake0-tech/seb-software-platform](https://github.com/runkleblake0-tech/seb-software-platform) (repo ID: 1353063469)
+  - Description: SEB Engineering - Tiger Blueprint software platform
+
+=== index.html ===
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEB Integration Hub</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>SEB Integration Hub</h1>
+      <button id="themeToggle">Toggle theme</button>
+      <nav id="nav">
+        <ul id="navLinks">
+          <li><a href="#sentinel">SENTINEL Analysis</a></li>
+          <li><a href="#endpoints">Endpoint Registry</a></li>
+          <li><a href="#deployment">Deployment Model</a></li>
+          <li><a href="#download">Download package</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="sentinel">
+        <h2>SENTINEL Analysis</h2>
+        <p>Overview content goes here.</p>
+      </section>
+
+      <section id="endpoints">
+        <h2>Endpoint Registry</h2>
+        <p>Endpoint information and registry details.</p>
+      </section>
+
+      <section id="deployment">
+        <h2>Deployment Model</h2>
+        <p>Deployment notes and architecture details.</p>
+      </section>
+
+      <section id="download">
+        <h2>Download package</h2>
+        <p><a href="#">Download</a></p>
+      </section>
+    </main>
+
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
+
+=== package.json ===
+
+{
+  "name": "seb-integration-hub",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
+}
+
+=== styles.css ===
+
+:root {
+  --bg: #ffffff;
+  --fg: #111827;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  margin: 0; padding: 1rem; color: var(--fg); background: var(--bg);
+}
+
+header { display:flex; align-items:center; gap:1rem; }
+
+nav ul { list-style: none; margin: 0; padding: 0; display:flex; gap:1rem; }
+
+section { margin-top: 2rem; }
+
+=== script.js ===
+
+const root = document.documentElement;
+const nav = document.getElementById('nav');
+const navLinks = document.getElementById('navLinks');
+const themeToggle = document.getElementById('themeToggle');
+
+// Simple nav interaction
+if (navLinks) {
+  navLinks.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      // Close mobile nav if present (no-op here)
+      console.log('navLinks click ->', e.target.getAttribute('href'));
+    }
+  });
+}
+
+// Theme toggle
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    root.classList.toggle('dark');
+    if (root.classList.contains('dark')) {
+      root.style.setProperty('--bg', '#0b1220');
+      root.style.setProperty('--fg', '#e6eef8');
+    } else {
+      root.style.setProperty('--bg', '#ffffff');
+      root.style.setProperty('--fg', '#111827');
+    }
+  });
+}
+
+// expose for tests
+export { navLinks, themeToggle, root };
+
+=== vercel.json ===
+
+{
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/static-build" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
