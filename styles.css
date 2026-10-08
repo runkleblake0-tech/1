@@ -1,15 +1,37 @@
 :root {
   --bg: #ffffff;
   --fg: #111827;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b1220;
+  --fg: #e6eef8;
+  color-scheme: dark;
 }
 
 body {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  margin: 0; padding: 1rem; color: var(--fg); background: var(--bg);
+  margin: 0;
+  padding: 1rem;
+  color: var(--fg);
+  background: var(--bg);
 }
 
-header { display:flex; align-items:center; gap:1rem; }
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
-nav ul { list-style: none; margin: 0; padding: 0; display:flex; gap:1rem; }
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
 
-section { margin-top: 2rem; }
+section {
+  margin-top: 2rem;
+}
