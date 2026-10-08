@@ -1,31 +1,61 @@
 const root = document.documentElement;
-const nav = document.getElementById('nav');
 const navLinks = document.getElementById('navLinks');
 const themeToggle = document.getElementById('themeToggle');
 
-// Simple nav interaction
-if (navLinks) {
-  navLinks.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') {
-      // Close mobile nav if present (no-op here)
-      console.log('navLinks click ->', e.target.getAttribute('href'));
+const setTheme = (theme) => {
+  const nextTheme = theme === 'dark' ? 'dark' : 'light';
+  root.setAttribute('data-theme', nextTheme);
+
+  try {
+    window.localStorage.setItem('seb-theme', nextTheme);
+  } catch (error) {
+    // Ignore persistence failures in restricted browsers.
+  }
+};
+
+const getThemePreference = () => {
+  try {
+    const storedTheme = window.localStorage.getItem('seb-theme');
+    if (storedTheme === 'light' || storedTheme === 'dark') {
+      return storedTheme;
     }
+  } catch (error) {
+    // Ignore storage access failures and fall back to the system preference.
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+if (navLinks) {
+  navLinks.addEventListener('click', (event) => {
+    const target = event.target.closest('a');
+    if (!target) {
+      return;
+    }
+
+    const href = target.getAttribute('href');
+    if (!href || !href.startsWith('#')) {
+      return;
+    }
+
+    const section = document.querySelector(href);
+    if (!section) {
+      return;
+    }
+
+    event.preventDefault();
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }
 
-// Theme toggle
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
-    root.classList.toggle('dark');
-    if (root.classList.contains('dark')) {
-      root.style.setProperty('--bg', '#0b1220');
-      root.style.setProperty('--fg', '#e6eef8');
-    } else {
-      root.style.setProperty('--bg', '#ffffff');
-      root.style.setProperty('--fg', '#111827');
-    }
+    const currentTheme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
   });
 }
+
+setTheme(getThemePreference());
 
 // expose for tests
 export { navLinks, themeToggle, root };
